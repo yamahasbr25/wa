@@ -7,64 +7,95 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f2f5;
         }
-        form {
+        .container {
+            width: 90%;
             max-width: 400px;
-            margin: auto;
+            background: white;
             padding: 20px;
-            border: 1px solid #ccc;
             border-radius: 10px;
-            background: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        label, input, button {
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
             display: block;
-            width: 100%;
-            margin-bottom: 10px;
+            color: #555;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
         }
         button {
-            background-color: green;
+            width: 100%;
+            background-color: #25d366;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
+            border-radius: 5px;
+            font-size: 18px;
             cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #1ebe57;
         }
     </style>
 </head>
 <body>
-    <form id="waForm">
-        <label>No Handphone:</label>
-        <input type="text" id="phone" required>
-        
-        <label>Nama Konsumen:</label>
-        <input type="text" id="namaKonsumen" required>
-        
-        <label>Nama Penjamin:</label>
-        <input type="text" id="namaPenjamin">
-        
-        <label>Alamat:</label>
-        <input type="text" id="alamat" required>
-        
-        <label>Pekerjaan:</label>
-        <input type="text" id="pekerjaan" required>
-        
-        <label>Type Motor:</label>
-        <input type="text" id="typeMotor" required>
-        
-        <label>OTR:</label>
-        <input type="text" id="otr" required>
-        
-        <label>DP:</label>
-        <input type="text" id="dp" required>
-        
-        <label>Tenor:</label>
-        <input type="text" id="tenor" required>
-        
-        <label>Angsuran:</label>
-        <input type="text" id="angsuran" required>
-        
-        <button type="button" onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
-    </form>
+    <div class="container">
+        <h2>Form Kredit Motor</h2>
+        <form id="waForm">
+            <label>No Handphone:</label>
+            <input type="text" id="phone" required>
+            
+            <label>Nama Konsumen:</label>
+            <input type="text" id="namaKonsumen" required>
+            
+            <label>Nama Penjamin:</label>
+            <input type="text" id="namaPenjamin">
+            
+            <label>Alamat:</label>
+            <input type="text" id="alamat" required>
+            
+            <label>Pekerjaan:</label>
+            <input type="text" id="pekerjaan" required>
+            
+            <label>Type Motor:</label>
+            <input type="text" id="typeMotor" required>
+            
+            <label>OTR:</label>
+            <input type="text" id="otr" required>
+            
+            <label>DP:</label>
+            <input type="text" id="dp" required>
+            
+            <label>Tenor:</label>
+            <input type="text" id="tenor" required>
+            
+            <label>Angsuran:</label>
+            <input type="text" id="angsuran" required>
+            
+            <button type="button" onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
+        </form>
+    </div>
 
     <script>
         function sendWhatsApp() {
@@ -80,15 +111,15 @@
             let angsuran = document.getElementById("angsuran").value;
             
             let message = `Halo, saya ingin mengajukan kredit motor:\n\n` +
-                          `Nama Konsumen: ${namaKonsumen}\n` +
-                          `Nama Penjamin: ${namaPenjamin}\n` +
-                          `Alamat: ${alamat}\n` +
-                          `Pekerjaan: ${pekerjaan}\n` +
-                          `Type Motor: ${typeMotor}\n` +
-                          `OTR: ${otr}\n` +
-                          `DP: ${dp}\n` +
-                          `Tenor: ${tenor}\n` +
-                          `Angsuran: ${angsuran}`;
+                          `*Nama Konsumen:* ${namaKonsumen}\n` +
+                          `*Nama Penjamin:* ${namaPenjamin}\n` +
+                          `*Alamat:* ${alamat}\n` +
+                          `*Pekerjaan:* ${pekerjaan}\n` +
+                          `*Type Motor:* ${typeMotor}\n` +
+                          `*OTR:* ${otr}\n` +
+                          `*DP:* ${dp}\n` +
+                          `*Tenor:* ${tenor}\n` +
+                          `*Angsuran:* ${angsuran}`;
             
             let whatsappURL = `https://wa.me/62${phone}?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
