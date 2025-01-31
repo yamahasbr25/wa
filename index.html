@@ -93,6 +93,9 @@
             
             <label>Angsuran:</label>
             <input type="text" id="angsuran" oninput="formatNumber(this)" required>
+
+            <label>No HP:</label>
+            <input type="text" id="nohp">
             
             <button type="button" onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
         </form>
@@ -115,17 +118,19 @@
             let dp = document.getElementById("dp").value;
             let tenor = document.getElementById("tenor").value;
             let angsuran = document.getElementById("angsuran").value;
+            let nohp = document.getElementById("nohp").value;
             
-            let message = `Halo, saya ingin mengajukan kredit motor:\n\n` +
+            let message = `SBR GENENG:\n\n` +
                           `*Nama Konsumen:* ${namaKonsumen}\n` +
-                          `*Nama Penjamin:* ${namaPenjamin}\n` +
+                          `*Nama Pas / Penj:* ${namaPenjamin}\n` +
                           `*Alamat:* ${alamat}\n` +
-                          `*Pekerjaan:* ${pekerjaan}\n` +
+                          `*Pekerjaan:* ${pekerjaan}\n\n` +
                           `*Type Motor:* ${typeMotor}\n` +
                           `*OTR:* ${otr}\n` +
                           `*DP:* ${dp}\n` +
                           `*Tenor:* ${tenor}\n` +
-                          `*Angsuran:* ${angsuran}`;
+                          `*Angsuran:* ${angsuran}\n` +
+                          `*No HP:* ${nohp}`;
             
             let whatsappURL = `https://wa.me/62${phone}?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
