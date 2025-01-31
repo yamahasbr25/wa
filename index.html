@@ -83,22 +83,27 @@
             <input type="text" id="typeMotor" required>
             
             <label>OTR:</label>
-            <input type="text" id="otr" required>
+            <input type="text" id="otr" oninput="formatNumber(this)" required>
             
             <label>DP:</label>
-            <input type="text" id="dp" required>
+            <input type="text" id="dp" oninput="formatNumber(this)" required>
             
             <label>Tenor:</label>
             <input type="text" id="tenor" required>
             
             <label>Angsuran:</label>
-            <input type="text" id="angsuran" required>
+            <input type="text" id="angsuran" oninput="formatNumber(this)" required>
             
             <button type="button" onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
         </form>
     </div>
 
     <script>
+        function formatNumber(input) {
+            let value = input.value.replace(/\D/g, '');
+            input.value = new Intl.NumberFormat('id-ID').format(value);
+        }
+
         function sendWhatsApp() {
             let phone = document.getElementById("phone").value.trim();
             let namaKonsumen = document.getElementById("namaKonsumen").value;
