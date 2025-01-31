@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Chat WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form id="waForm">
+        <label>No Handphone:</label>
+        <input type="text" id="phone" required>
+        
+        <label>Nama Konsumen:</label>
+        <input type="text" id="namaKonsumen" required>
+        
+        <label>Nama Penjamin:</label>
+        <input type="text" id="namaPenjamin">
+        
+        <label>Alamat:</label>
+        <input type="text" id="alamat" required>
+        
+        <label>Pekerjaan:</label>
+        <input type="text" id="pekerjaan" required>
+        
+        <label>Type Motor:</label>
+        <input type="text" id="typeMotor" required>
+        
+        <label>OTR:</label>
+        <input type="text" id="otr" required>
+        
+        <label>DP:</label>
+        <input type="text" id="dp" required>
+        
+        <label>Tenor:</label>
+        <input type="text" id="tenor" required>
+        
+        <label>Angsuran:</label>
+        <input type="text" id="angsuran" required>
+        
+        <button type="button" onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
+    </form>
+
+    <script>
+        function sendWhatsApp() {
+            let phone = document.getElementById("phone").value.trim();
+            let namaKonsumen = document.getElementById("namaKonsumen").value;
+            let namaPenjamin = document.getElementById("namaPenjamin").value;
+            let alamat = document.getElementById("alamat").value;
+            let pekerjaan = document.getElementById("pekerjaan").value;
+            let typeMotor = document.getElementById("typeMotor").value;
+            let otr = document.getElementById("otr").value;
+            let dp = document.getElementById("dp").value;
+            let tenor = document.getElementById("tenor").value;
+            let angsuran = document.getElementById("angsuran").value;
+            
+            let message = `Halo, saya ingin mengajukan kredit motor:\n\n` +
+                          `Nama Konsumen: ${namaKonsumen}\n` +
+                          `Nama Penjamin: ${namaPenjamin}\n` +
+                          `Alamat: ${alamat}\n` +
+                          `Pekerjaan: ${pekerjaan}\n` +
+                          `Type Motor: ${typeMotor}\n` +
+                          `OTR: ${otr}\n` +
+                          `DP: ${dp}\n` +
+                          `Tenor: ${tenor}\n` +
+                          `Angsuran: ${angsuran}`;
+            
+            let whatsappURL = `https://wa.me/62${phone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
