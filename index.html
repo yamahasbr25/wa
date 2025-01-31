@@ -63,11 +63,11 @@
 <body>
     <div class="container">
         <h2>Form Kredit Motor</h2>
-         <p><b>BAF - Andi</b> | 081225957799</p>
-         <p><b>BAF - Julius</b> | 085330864646</p>
-         <p><b>MEGA - Seno</b> | 081326365605</p>
-         <p><b>OTO - Endik</b> | 081334199939</p>
-         <p><b>SBR - Lia</b> | 085706415326</p>
+         <p>BAF - Andi | 081225957799
+            BAF - Julius | 085330864646
+            MEGA - Seno | 081326365605
+            OTO - Endik | 081334199939
+            SBR - Lia | 085706415326</p>
         <form id="waForm">
             <label>No Handphone:</label>
             <input type="text" id="phone" required>
@@ -75,7 +75,7 @@
             <label>Nama Konsumen:</label>
             <input type="text" id="namaKonsumen" required>
             
-            <label>Nama Pasangan/Penjamin:</label>
+            <label>Nama Penjamin:</label>
             <input type="text" id="namaPenjamin">
             
             <label>Alamat:</label>
@@ -83,9 +83,6 @@
             
             <label>Pekerjaan:</label>
             <input type="text" id="pekerjaan" required>
-
-            <label>No HP:</label>
-            <input type="text" id="nohp" required>
             
             <label>Type Motor:</label>
             <input type="text" id="typeMotor" required>
@@ -100,7 +97,10 @@
             <input type="text" id="tenor" required>
             
             <label>Angsuran:</label>
-            <input type="text" id="angsuran" oninput="formatNumber(this)" required>            
+            <input type="text" id="angsuran" oninput="formatNumber(this)" required>
+
+            <label>No HP:</label>
+            <input type="text" id="nohp">
             
             <button type="button" onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
         </form>
@@ -118,24 +118,24 @@
             let namaPenjamin = document.getElementById("namaPenjamin").value;
             let alamat = document.getElementById("alamat").value;
             let pekerjaan = document.getElementById("pekerjaan").value;
-            let nohp = document.getElementById("nohp").value;
             let typeMotor = document.getElementById("typeMotor").value;
             let otr = document.getElementById("otr").value;
             let dp = document.getElementById("dp").value;
             let tenor = document.getElementById("tenor").value;
             let angsuran = document.getElementById("angsuran").value;
-                        
+            let nohp = document.getElementById("nohp").value;
+            
             let message = `SBR GENENG:\n\n` +
-                          `*Nama Kons:* ${namaKonsumen}\n` +
+                          `*Nama Konsumen:* ${namaKonsumen}\n` +
                           `*Nama Pas / Penj:* ${namaPenjamin}\n` +
                           `*Alamat:* ${alamat}\n` +
-                          `*Pekerjaan:* ${pekerjaan}\n` +
-                          `*No HP:* ${nohp}\n\n` +
-                          `*Unit:* ${typeMotor}\n` +
+                          `*Pekerjaan:* ${pekerjaan}\n\n` +
+                          `*Type Motor:* ${typeMotor}\n` +
                           `*OTR:* ${otr}\n` +
                           `*DP:* ${dp}\n` +
                           `*Tenor:* ${tenor}\n` +
-                          `*Angsuran:* ${angsuran}`;                          `
+                          `*Angsuran:* ${angsuran}\n` +
+                          `*No HP:* ${nohp}`;
             
             let whatsappURL = `https://wa.me/62${phone}?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
