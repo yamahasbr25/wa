@@ -101,6 +101,9 @@
 
             <label>No HP:</label>
             <input type="text" id="nohp">
+
+            <label>Ket:</label>
+            <input type="text" id="ket">
             
             <button type="button" onclick="sendWhatsApp()">Kirim ke WhatsApp</button>
         </form>
@@ -124,6 +127,7 @@
             let tenor = document.getElementById("tenor").value;
             let angsuran = document.getElementById("angsuran").value;
             let nohp = document.getElementById("nohp").value;
+            let ket = document.getElementById("ket").value;
             
             let message = `SBR GENENG:\n\n` +
                           `*Nama Konsumen:* ${namaKonsumen}\n` +
@@ -135,7 +139,8 @@
                           `*DP:* ${dp}\n` +
                           `*Tenor:* ${tenor}\n` +
                           `*Angsuran:* ${angsuran}\n` +
-                          `*No HP:* ${nohp}`;
+                          `*No HP:* ${nohp}\n` +
+                          `*Ket:* ${ket}`;
             
             let whatsappURL = `https://wa.me/62${phone}?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
